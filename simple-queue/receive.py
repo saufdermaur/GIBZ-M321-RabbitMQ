@@ -1,4 +1,6 @@
-import pika, sys, os
+import pika
+import sys
+import os
 
 def callback(ch, method, properties, body):
     print(f" [x] Received {body}")
