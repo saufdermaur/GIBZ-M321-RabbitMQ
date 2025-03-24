@@ -234,3 +234,27 @@ python receive_topic.py "warning.#" "debug.#" "info.#"
 ```bash
 python receive_topic.py "#"
 ```
+
+## Remote Procedure Calls
+
+RabbitMQ also supports remote procedure calls (RPC), where a client can execute some functionality on a remote server.
+
+### Running the example
+
+```
+cd rpc
+```
+
+In this configuration we have a client and a server. The client will create an exclusive callback queue, where the server can send messages to and the client can receive messages. The client will send a message containing the callback queue, so that the server knows where to send an answer. The server waits for messages in the `rpc_queue` and executes the function as soon as it receives a message. The client will then wait on a response from the callback queue. This way, a synchronous workflow is implemented between distributed systems with an asynchronous messaging system.
+
+First we need to start the RPC server
+
+```
+python rpc_server.py
+```
+
+Then we can launch a client that will call for a remote execution of a fibonacci number.
+
+```
+python rcp_client.py
+```
