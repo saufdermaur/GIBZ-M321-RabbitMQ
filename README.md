@@ -1,5 +1,29 @@
 # RabbitMQ
 
+- [RabbitMQ](#rabbitmq)
+  - [Running RabbitMQ](#running-rabbitmq)
+  - [Simple queue](#simple-queue)
+    - [Running the example](#running-the-example)
+  - [Simple stream](#simple-stream)
+    - [Running the example](#running-the-example-1)
+    - [Demonstrating Stream Characterisitics](#demonstrating-stream-characterisitics)
+    - [Code Explanation](#code-explanation)
+      - [Producer (send.py)](#producer-sendpy)
+      - [Consumer (receive.py)](#consumer-receivepy)
+  - [Fanout exchange](#fanout-exchange)
+    - [Running the Example](#running-the-example-2)
+    - [Sending and Receiving Messages](#sending-and-receiving-messages)
+    - [Code Explanation](#code-explanation-1)
+      - [Producer (emit\_log.py)](#producer-emit_logpy)
+      - [Consumer (receive\_logs.py)](#consumer-receive_logspy)
+  - [Topic exchange](#topic-exchange)
+    - [Running the example](#running-the-example-3)
+    - [Emitting messages with topics](#emitting-messages-with-topics)
+      - [Inputs](#inputs)
+    - [Receiving messages based on a topic](#receiving-messages-based-on-a-topic)
+  - [Remote Procedure Calls](#remote-procedure-calls)
+    - [Running the example](#running-the-example-4)
+
 ## Running RabbitMQ
 
 Community docker image
@@ -163,12 +187,12 @@ cd fanout-exchange
 
 ### Code Explanation
 
-### Producer (emit_log.py)
+#### Producer (emit_log.py)
 * Establishes a connection to the RabbitMQ server.
 * Declares a fanout exchange named logs.
 * Sends a message to the exchange.
 
-### Consumer (receive_logs.py)
+#### Consumer (receive_logs.py)
 * Connects to the RabbitMQ server and declares the same fanout exchange.
 * Creates a temporary, exclusive queue bound to the exchange.
 * Listens for and prints incoming messages.
